@@ -1,0 +1,13 @@
+read lexc able.lexc  # Read the pre-defined lexicon
+def Lexicon;         # Label this transducer "Lexicon"
+
+
+def Rule1 a b l e "+" i t y -> a b i l i t y;         # Rule1: convert able+ity to ability                          
+def Rule2 y-> i e || _ "+" s;                         # Rule2: Turn y into ie before +s
+def Rule3 n -> n n || _ "+" [a|e|i|o|u];              # Rule3: Turn n into nn before +V where V is any vowel
+def Rule4 [a|e|i|o|u]->0 || _ "+" [a|e|i|o|u];        # Rule4: Delete vowels when they occur before + and another vowel
+def Rule5 [..] -> e||[s h| c h |s|x|z] _ "+" s;		  # Rule5: Insert an e between a sibilant on the left and +s on the right
+def Cleanup "+" -> 0;								  # Cleanup: delete all "+" symbols
+
+regex Lexicon .o. Rule1 .o. Rule2 .o. Rule3 .o. Rule4 .o. Rule5 .o. Cleanup;
+pairs

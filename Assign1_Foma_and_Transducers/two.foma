@@ -1,0 +1,11 @@
+read text engwords.txt
+def Words;
+
+# define a transducer T that maps any number sequences to all possible letter sequences as defined by the keyboard
+
+def T [[2:[a|b|c]]|[3:[d|e|f]]|[4:[g|h|i]]|[5:[j|k|l]]|[6:[m|n|o]]|[7:[p|q|r|s]]|[8:[t|u|v]]|[9:[w|x|y|z]]|["0":" "]]*;
+regex T .o. [Words " "]* Words;
+down 26374226047020837903433428580526482430649330948403645474
+
+
+# Solution: american is a very difficult language mixed with english

@@ -1,0 +1,14 @@
+# 1.1 Any word that ends in t and begins with p
+def one p ?* t;
+
+# 1.2 Any word that ends in t or begins with p, but NOT both
+# set of words that begin with p or end with t minus the set of words that begin with 'p' and end with 't'
+def Two [p ?* | ?* t] - [p ?* & ?* t];   
+
+# 1.3 Any word that doesn't contain both p and t
+# Negation of the set of words that contain both 'p' and 't'
+def Three ~[$p & $t];
+
+# 1.4 Any word that may contain a p, but only if followed by t
+# Negation of the set of words that contain a 'p' followed by something that is not a 't'
+def Four ~[?* p \t ?*];
